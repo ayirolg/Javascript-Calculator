@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Calculator</title>
+
+	<!-- Bootstrap 5.3.0 CDN -->
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<style>
+		body {
+			background-color: black;
+			margin: 1rem;
+			text-align: center;
+		}
+		.container {
+			border: 2px solid orange;
+			width: 300px;
+			padding: 5px;
+			border-radius: 10px;
+		}
+		.button {
+			border-radius: 50%;
+			border: 2px solid orange;
+			background-color: black;
+			width: 50px;
+			color: orange;
+			text-align: center;
+			margin: 5px;
+			font-size: 1.5rem;
+			font-weight: bold;
+		}
+		.button:hover {
+			background-color: orange;
+			color: black;
+		}
+		.equal {
+			background-color: orange;
+			color: black;
+		}
+		.equal:hover {
+			background-color: black;
+			color: orange;
+			border: 2px solid orange;
+		}
+		form {
+			justify-content: center;
+		}
+		#res { 
+			width: 45vh; 
+			margin-top: 2rem;
+			height: 2.5rem;
+			font-size: 2rem;
+			text-align: right;
+			border-radius: 5px;
+			background-color: black;
+			color: orange;
+			border: 2px solid orange;
+		}
+		.clear {
+			background-color: orange;
+			color: black;
+		}
+		.clear:hover {
+			background-color: black;
+			color: orange;
+			border: 2px solid orange;
+		}
+	</style>
+</head>
+<body>
+
+<div class="container">
+	<form>
+		<div>
+			<input type="text" id="res" readonly>
+		</div>
+		<br>
+		<div>
+			<input type="button" value="7" class="btn button number" onclick="disp('7')">
+			<input type="button" value="8" class="btn button number" onclick="disp('8')">
+			<input type="button" value="9" class="btn button number" onclick="disp('9')">
+			<input type="button" value="/" class="btn button operator" onclick="disp('/')">
+			<br>
+			<input type="button" value="4" class="btn button number" onclick="disp('4')">
+			<input type="button" value="5" class="btn button number" onclick="disp('5')">
+			<input type="button" value="6" class="btn button number" onclick="disp('6')">
+			<input type="button" value="x" class="btn button operator" onclick="disp('*')">
+			<br>
+			<input type="button" value="1" class="btn button number" onclick="disp('1')">
+			<input type="button" value="2" class="btn button number" onclick="disp('2')">
+			<input type="button" value="3" class="btn button number" onclick="disp('3')">
+			<input type="button" value="+" class="btn button operator" onclick="disp('+')">
+			<br>
+			<input type="button" value="C" class="btn button clear" onclick="clearScreen()">
+			<input type="button" value="0" class="btn button number" onclick="disp('0')">
+			<input type="button" value="=" class="btn button equal" onclick="result()">
+			<input type="button" value="-" class="btn button operator" onclick="disp('-')">
+			<br>
+		</div>
+	</form>
+</div>
+
+<script type="text/javascript">
+	var display = document.getElementById("res");
+
+	function disp(val) {
+		display.value += val;
+	}
+
+	function result() {
+		try {
+			let op = eval(display.value);
+
+			if (!isFinite(op)) {
+				throw "Division by zero error";
+			}
+			display.value = op;
+		} catch (error) {
+			display.value = error;
+		}
+	}
+
+	function clearScreen() {
+		display.value = '';
+	}
+</script>
+
+</script>
+
+
+
+<!-- Bootstrap 5.3.0 JS and dependencies -->
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
